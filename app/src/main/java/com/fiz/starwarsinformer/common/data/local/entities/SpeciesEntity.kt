@@ -2,6 +2,7 @@ package com.fiz.starwarsinformer.common.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.fiz.starwarsinformer.features.species.domain.models.Species
 
 @Entity(tableName = "species")
 data class SpeciesEntity(
@@ -22,7 +23,28 @@ data class SpeciesEntity(
         val skinColors: String,
         val url: String,
 ) {
-        companion object {
-                const val NAME_FOR_DAO = "SPECIES"
-        }
+
+    fun toSpecies(): Species {
+        return Species(
+            averageHeight = averageHeight,
+            averageLifespan = averageLifespan,
+            classification = classification,
+            created = created,
+            designation = designation,
+            edited = edited,
+            eyeColors = eyeColors,
+            hairColors = hairColors,
+            homeWorld = homeWorld,
+            language = language,
+            name = name,
+            people = people,
+            films = films,
+            skinColors = skinColors,
+            url = url,
+        )
+    }
+
+    companion object {
+        const val NAME_FOR_DAO = "SPECIES"
+    }
 }

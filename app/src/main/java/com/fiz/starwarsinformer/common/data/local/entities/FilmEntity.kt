@@ -2,6 +2,7 @@ package com.fiz.starwarsinformer.common.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.fiz.starwarsinformer.features.films.domain.models.Film
 
 @Entity(tableName = "films")
 data class FilmEntity(
@@ -21,7 +22,27 @@ data class FilmEntity(
         val url: String,
         val vehicles: List<String>,
 ) {
-    companion object {
-        const val NAME_FOR_DAO = "FILM"
-    }
+
+        fun toFilm(): Film {
+                return Film(
+                        characters = characters,
+                        created = created,
+                        director = director,
+                        edited = edited,
+                        episodeId = episodeId,
+                        openingCrawl = openingCrawl,
+                        planets = planets,
+                        producer = producer,
+                        releaseDate = releaseDate,
+                        species = species,
+                        starships = starships,
+                        title = title,
+                        url = url,
+                        vehicles = vehicles
+                )
+        }
+
+        companion object {
+                const val NAME_FOR_DAO = "FILM"
+        }
 }

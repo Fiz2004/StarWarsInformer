@@ -1,5 +1,6 @@
 package com.fiz.starwarsinformer.common.data.remote.dto.one
 
+import com.fiz.starwarsinformer.common.data.local.entities.PeopleEntity
 import com.google.gson.annotations.SerializedName
 
 data class PeopleDto(
@@ -19,4 +20,25 @@ data class PeopleDto(
     @SerializedName("created") val created: String?,
     @SerializedName("edited") val edited: String?,
     @SerializedName("url") val url: String?,
-)
+) {
+    fun toPeopleEntity(): PeopleEntity {
+        return PeopleEntity(
+            name = name.orEmpty(),
+            height = height.orEmpty(),
+            mass = mass.orEmpty(),
+            hairColor = hairColor.orEmpty(),
+            skinColor = skinColor.orEmpty(),
+            eyeColor = eyeColor.orEmpty(),
+            birthYear = birthYear.orEmpty(),
+            gender = gender.orEmpty(),
+            homeWorld = homeWorld.orEmpty(),
+            films = films?.mapNotNull { it } ?: listOf(),
+            species = species?.mapNotNull { it } ?: listOf(),
+            vehicles = vehicles?.mapNotNull { it } ?: listOf(),
+            starships = starships?.mapNotNull { it } ?: listOf(),
+            created = created.orEmpty(),
+            edited = edited.orEmpty(),
+            url = url.orEmpty(),
+        )
+    }
+}

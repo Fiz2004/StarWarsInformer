@@ -2,6 +2,7 @@ package com.fiz.starwarsinformer.common.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.fiz.starwarsinformer.features.planets.domain.models.Planet
 
 @Entity(tableName = "planets")
 data class PlanetEntity(
@@ -21,7 +22,27 @@ data class PlanetEntity(
         val terrain: String,
         val url: String,
 ) {
-        companion object {
-                const val NAME_FOR_DAO = "PLANET"
-        }
+
+    fun toPlanet(): Planet {
+        return Planet(
+            climate = climate,
+            created = created,
+            diameter = diameter,
+            edited = edited,
+            films = films,
+            gravity = gravity,
+            name = name,
+            orbitalPeriod = orbitalPeriod,
+            population = population,
+            residents = residents,
+            rotationPeriod = rotationPeriod,
+            surfaceWater = surfaceWater,
+            terrain = terrain,
+            url = url,
+        )
+    }
+
+    companion object {
+        const val NAME_FOR_DAO = "PLANET"
+    }
 }

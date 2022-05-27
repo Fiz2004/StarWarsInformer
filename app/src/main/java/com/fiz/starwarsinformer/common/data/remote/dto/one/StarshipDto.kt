@@ -1,5 +1,6 @@
 package com.fiz.starwarsinformer.common.data.remote.dto.one
 
+import com.fiz.starwarsinformer.common.data.local.entities.StarshipEntity
 import com.google.gson.annotations.SerializedName
 
 data class StarshipDto(
@@ -21,4 +22,28 @@ data class StarshipDto(
     @SerializedName("pilots") val pilots: List<String?>?,
     @SerializedName("starship_class") val starshipClass: String?,
     @SerializedName("url") val url: String?,
-)
+) {
+    fun toStarshipEntity(): StarshipEntity {
+        return StarshipEntity(
+
+            MGLT = MGLT.orEmpty(),
+            cargoCapacity = cargoCapacity.orEmpty(),
+            consumables = consumables.orEmpty(),
+            costInCredits = costInCredits.orEmpty(),
+            created = created.orEmpty(),
+            crew = crew.orEmpty(),
+            edited = edited.orEmpty(),
+            hyperDriveRating = hyperDriveRating.orEmpty(),
+            length = length.orEmpty(),
+            manufacturer = manufacturer.orEmpty(),
+            maxAtmosphericSpeed = maxAtmosphericSpeed.orEmpty(),
+            model = model.orEmpty(),
+            name = name.orEmpty(),
+            passengers = passengers.orEmpty(),
+            films = films?.mapNotNull { it } ?: listOf(),
+            pilots = pilots?.mapNotNull { it } ?: listOf(),
+            starshipClass = starshipClass.orEmpty(),
+            url = url.orEmpty(),
+        )
+    }
+}

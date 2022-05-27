@@ -1,5 +1,6 @@
 package com.fiz.starwarsinformer.common.data.remote.dto.one
 
+import com.fiz.starwarsinformer.common.data.local.entities.PlanetEntity
 import com.google.gson.annotations.SerializedName
 
 data class PlanetDto(
@@ -17,4 +18,23 @@ data class PlanetDto(
     @SerializedName("surface_water") val surfaceWater: String?,
     @SerializedName("terrain") val terrain: String?,
     @SerializedName("url") val url: String?,
-)
+) {
+    fun toPlanetEntity(): PlanetEntity {
+        return PlanetEntity(
+            climate = climate.orEmpty(),
+            created = created.orEmpty(),
+            diameter = diameter.orEmpty(),
+            edited = edited.orEmpty(),
+            films = films?.mapNotNull { it } ?: listOf(),
+            gravity = gravity.orEmpty(),
+            name = name.orEmpty(),
+            orbitalPeriod = orbitalPeriod.orEmpty(),
+            population = population.orEmpty(),
+            residents = residents?.mapNotNull { it } ?: listOf(),
+            rotationPeriod = rotationPeriod.orEmpty(),
+            surfaceWater = surfaceWater.orEmpty(),
+            terrain = terrain.orEmpty(),
+            url = url.orEmpty(),
+        )
+    }
+}
