@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Star Wars Informer</string>
+    <string name="network_error">Couldn\'t load data</string>
 </resources>
