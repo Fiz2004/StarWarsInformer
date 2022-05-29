@@ -22,4 +22,8 @@ data class PeopleEntity(
         val created: String,
         val edited: String,
         val url: String,
-)
+) {
+    companion object {
+        const val NAME_FOR_DAO = "PEOPLE"
+    }
+}

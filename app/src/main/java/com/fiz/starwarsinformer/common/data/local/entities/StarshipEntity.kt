@@ -22,4 +22,8 @@ data class StarshipEntity(
         val pilots: List<String>,
         val starshipClass: String,
         val url: String,
-)
+) {
+    companion object {
+        const val NAME_FOR_DAO = "STARSHIP"
+    }
+}

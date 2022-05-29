@@ -20,4 +20,8 @@ data class VehicleEntity(
         val films: List<String>,
         val url: String,
         val vehicleClass: String,
-)
+) {
+    companion object {
+        const val NAME_FOR_DAO = "VEHICLE"
+    }
+}

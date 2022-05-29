@@ -21,4 +21,8 @@ data class SpeciesEntity(
         val films: List<String>,
         val skinColors: String,
         val url: String,
-)
+) {
+        companion object {
+                const val NAME_FOR_DAO = "SPECIES"
+        }
+}

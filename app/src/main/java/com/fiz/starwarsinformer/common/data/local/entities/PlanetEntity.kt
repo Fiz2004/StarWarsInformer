@@ -20,4 +20,8 @@ data class PlanetEntity(
         val surfaceWater: String,
         val terrain: String,
         val url: String,
-)
+) {
+        companion object {
+                const val NAME_FOR_DAO = "PLANET"
+        }
+}
