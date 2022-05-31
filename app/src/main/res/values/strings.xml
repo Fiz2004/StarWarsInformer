@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Star Wars Informer</string>
     <string name="network_error">Couldn\'t load data</string>
+    <string name="title">Title</string>
+    <string name="created">Created</string>
+    <string name="films">Films</string>
+    <string name="director">Director</string>
+    <string name="edited">Edited</string>
+    <string name="episodeId">Episode Id</string>
+    <string name="openingCrawl">Opening Crawl</string>
+    <string name="producer">Producer</string>
+    <string name="releaseData">Release Date</string>
+    <string name="url">Url</string>
+    <string name="characters">Characters</string>
+    <string name="planets">Planets</string>
+    <string name="species">Species</string>
+    <string name="starships">Starships</string>
+    <string name="vehicles">Vehicles</string>
 </resources>

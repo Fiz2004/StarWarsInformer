@@ -10,8 +10,8 @@ import com.fiz.starwarsinformer.features.films.domain.repositories.FilmRepositor
 import javax.inject.Inject
 
 class FilmRepositoryImpl @Inject constructor(
-        private val remoteDataSource: WorldApi,
-        private val localDataSource: FilmDao
+    private val remoteDataSource: WorldApi,
+    private val localDataSource: FilmDao
 ) : FilmRepository {
 
     override suspend fun getFilms(fetchFromRemote: Boolean): Resource<List<Film>> {
@@ -26,7 +26,7 @@ class FilmRepositoryImpl @Inject constructor(
         }
 
         var page = 1
-        val remoteResults: MutableList<FilmEntity>? = mutableListOf()
+        val remoteResults: MutableList<FilmEntity> = mutableListOf()
 
         do {
             val remoteData = try {
@@ -36,17 +36,15 @@ class FilmRepositoryImpl @Inject constructor(
                 return Resource.Error(R.string.network_error)
             }
 
-            if (remoteResults != null) {
-                remoteResults += remoteData.results?.mapNotNull { it?.toFilmEntity() }
-                    ?: listOf()
-            }
+            remoteResults += remoteData.results?.mapNotNull { it?.toFilmEntity() }
+                ?: listOf()
 
             page += 1
 
         } while (remoteData.next != null)
 
         remoteResults.let { data ->
-            data?.let {
+            data.let {
                 localDataSource.clearFilms()
                 localDataSource.insertFilms(
                     it
